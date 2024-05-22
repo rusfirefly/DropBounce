@@ -1,18 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using System;
 
 public class PlayerMove : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public event Action Drop;
+    private float _xPosition;
+    public bool IsDroped;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        TouchInput();
+    }
+    
+    private void TouchInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            _xPosition = touchPosition.x;
+            if (IsDroped == false)
+            {
+                Move();
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    Drop?.Invoke();
+                    IsDroped = true;
+                }
+            }
+        }
+    }
+
+    private void Move()
+    {
+        _xPosition = Mathf.Clamp(_xPosition, -1.245f, 1.323f);
+        Vector3 position = transform.position;
+        position.x = _xPosition;
+        transform.DOMoveX(_xPosition, 0.05f).SetEase(Ease.InCirc);
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4570546051803089946}
   - component: {fileID: 4570546051803089947}
   - component: {fileID: -2366594592698886312}
+  - component: {fileID: 1710146960552239866}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -98,3 +99,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _endPosition: {fileID: 0}
   _distance: 0.2
+--- !u!64 &1710146960552239866
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570546051803089944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8184010832865028774, guid: 10c652ac4fbb9a5499c38f197ce153d3, type: 3}

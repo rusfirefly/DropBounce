@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
     [SerializeField] private float _distance;
     private bool _isMove;
     private float _speed;
+    private int _number;
 
     public void Inizialize(Transform positionend)
     {

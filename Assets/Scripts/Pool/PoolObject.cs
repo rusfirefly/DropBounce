@@ -9,12 +9,10 @@ public abstract class PoolObject : MonoBehaviour
 
     private protected List<GameObject> _pool = new List<GameObject>();
 
-    private void Start()
+    public void Initialize()
     {
         InitializePool();
     }
-
-
 
     protected virtual void InitializePool()
     {
