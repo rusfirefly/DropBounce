@@ -11,9 +11,11 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerMove _move;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private LayerMask _homeMask;
-    [SerializeField] private Ease _effect;
+    [SerializeField] private LayerMask _enemyMask;
     [SerializeField] private LayerMask _coinMask;
     [SerializeField] private CoinPool _coinPool;
+    [SerializeField] private Ease _effect;
+
 
     private float _yHomePosition;
 
@@ -38,37 +40,37 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if ((collision.gameObject.layer & (1<<_groundMask)) == 0)
-        if (CheckMask(collision.gameObject.layer, _groundMask))
+        if (collision.gameObject.tag == "Ground")
         {
             transform.DOMoveY(_yHomePosition, 0.2f).SetEase(_effect);
             _rigidbody.isKinematic = true;
         }
 
-        //if ((collision.gameObject.layer & (1 << _homeMask)) == 0)
-        if (CheckMask(collision.gameObject.layer, _homeMask))
+        if (collision.gameObject.tag == "Home")
         {
             _move.IsDroped = false;
         }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Invoke("Die",1.5f);
+            //Effect
+            Destroy(gameObject);
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("GAME OVER!");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //if ((other.gameObject.layer & (1 << _coinMask)) == 0)
-        if(CheckMask(other.gameObject.layer, _coinMask))
+        if(other.gameObject.tag == "Coin")
         {
             _coinPool.ReturnObjecToPool(other.gameObject);
             CollectedCoin?.Invoke();
         }
-    }
-
-    private bool CheckMask(int onLayer, LayerMask mask)
-    {
-        if ((onLayer & (1 << _coinMask)) == 0)
-        {
-            return true;
-        }
-        return false;
     }
 
     private void OnDrop()
