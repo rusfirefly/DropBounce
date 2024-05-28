@@ -5,7 +5,8 @@ public class HudHandler : MonoBehaviour
 {
     [SerializeField] private Text _scoreText;
     [SerializeField] private ColorChange _colorChange;
-    private float _score;
+    [SerializeField] private Text _bestScoreText;
+    [SerializeField] private Text _currentScoreText;
 
     private void OnEnable()
     {
@@ -17,11 +18,18 @@ public class HudHandler : MonoBehaviour
         Player.CollectedCoin -= OnCollectedCoin;
     }
 
-    private void OnCollectedCoin()
+    private void OnCollectedCoin(int score)
     {
-        _score++;
-        if (_score % 2 == 0 && _score != 0)
+        if (score % 20 == 0 && score != 0)
             _colorChange.SetColor(Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f));
-        _scoreText.text = $"{_score}";
+        _scoreText.text = $"{score}";
     }
+
+    public void SetCurrentScore(int score) => _currentScoreText.text = $"{score}";
+
+    public void ShowBestScore(int score)
+    {
+        _bestScoreText.text = $"{score}";
+    }
+
 }

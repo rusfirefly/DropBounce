@@ -1,11 +1,12 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
+using YG;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    public static event Action CollectedCoin;
+    public static event Action<int> CollectedCoin;
 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private PlayerMove _move;
@@ -16,12 +17,13 @@ public class Player : MonoBehaviour
     [SerializeField] private CoinPool _coinPool;
     [SerializeField] private Ease _effect;
 
-
+    private int _score;
     private float _yHomePosition;
 
     private void Start()
     {
         _yHomePosition = transform.position.y;
+        _score = 0;
     }
 
     private void OnEnable()
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Invoke("Die",1.5f);
+            YandexGame.savesData.Score = _score;
             //Effect
             Destroy(gameObject);
         }
@@ -68,8 +71,9 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.tag == "Coin")
         {
+            _score++;
             _coinPool.ReturnObjecToPool(other.gameObject);
-            CollectedCoin?.Invoke();
+            CollectedCoin?.Invoke(_score);
         }
     }
 
