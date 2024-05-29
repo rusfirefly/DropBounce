@@ -16,8 +16,8 @@ MonoBehaviour:
   playerPhotoSize: 0
   autoGameReadyAPI: 1
   playerInfoSimulation:
-    authorized: 1
-    isMobile: 0
+    authorized: 0
+    isMobile: 1
     language: en
     name: Player this
     uniqueID: 000

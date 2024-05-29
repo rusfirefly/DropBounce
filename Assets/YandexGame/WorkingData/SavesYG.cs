@@ -11,10 +11,16 @@ namespace YG
         public bool promptDone;
 
         public int Score;
-
         public SavesYG()
         {
 
         }
+    }
+
+    [System.Serializable]
+    public class GameData
+    {
+        public string PlayerName;
+        public int BestScore;
     }
 }

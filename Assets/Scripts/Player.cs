@@ -7,6 +7,7 @@ using YG;
 public class Player : MonoBehaviour
 {
     public static event Action<int> CollectedCoin;
+    public static event Action Die;
 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private PlayerMove _move;
@@ -29,10 +30,18 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         _move.Drop += OnDrop;
+        LevelHandler.NewGame += OnNewGame;
     }
     private void OnDisable()
     {
         _move.Drop -= OnDrop;
+        LevelHandler.NewGame -= OnNewGame;
+    }
+
+    private void OnNewGame()
+    {
+        _score = 0;
+        
     }
 
     private void OnValidate()
@@ -55,16 +64,25 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Invoke("Die",1.5f);
-            YandexGame.savesData.Score = _score;
-            //Effect
-            Destroy(gameObject);
+            //Invoke("Die",1.5f);
+            OnDie();
+            //Destroy(gameObject);
         }
     }
 
-    private void Die()
+    private void OnDie()
     {
         Debug.Log("GAME OVER!");
+        int bestScore = YandexGame.savesData.Score;
+
+        if (_score > bestScore)
+        {
+            YandexGame.savesData.Score = _score;
+            YandexGame.SaveProgress();
+        }
+
+        Die?.Invoke();
+        Time.timeScale = 0;
     }
 
     private void OnTriggerEnter(Collider other)

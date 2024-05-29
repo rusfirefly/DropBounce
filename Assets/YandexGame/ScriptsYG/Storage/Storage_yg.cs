@@ -172,7 +172,6 @@ namespace YG
         }
         public static void LoadProgress() => Instance._LoadProgress();
 
-
         public void SetLoadSaves(string data)
         {
             DataState cloudDataState = DataState.Exist;
