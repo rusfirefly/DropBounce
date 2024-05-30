@@ -11,6 +11,7 @@ namespace YG
         public bool promptDone;
 
         public int Score;
+
         public SavesYG()
         {
 

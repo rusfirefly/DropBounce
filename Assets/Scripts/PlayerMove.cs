@@ -39,4 +39,14 @@ public class PlayerMove : MonoBehaviour
         position.x = _xPosition;
         transform.DOMoveX(_xPosition, 0.05f).SetEase(Ease.InCirc);
     }
+
+    public void DropCube()
+    {
+        Move();
+        if (touch.phase == TouchPhase.Ended)
+        {
+            Drop?.Invoke();
+            IsDroped = true;
+        }
+    }
 }

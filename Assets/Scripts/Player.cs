@@ -11,10 +11,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private PlayerMove _move;
-    [SerializeField] private LayerMask _groundMask;
-    [SerializeField] private LayerMask _homeMask;
-    [SerializeField] private LayerMask _enemyMask;
-    [SerializeField] private LayerMask _coinMask;
     [SerializeField] private CoinPool _coinPool;
     [SerializeField] private Ease _effect;
 
