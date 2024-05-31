@@ -5,6 +5,7 @@ using System;
 public class PlayerMove : MonoBehaviour
 {
     public event Action Drop;
+
     private float _xPosition;
     public bool IsDroped;
 
@@ -22,12 +23,7 @@ public class PlayerMove : MonoBehaviour
             _xPosition = touchPosition.x;
             if (IsDroped == false)
             {
-                Move();
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    Drop?.Invoke();
-                    IsDroped = true;
-                }
+                DropCube(touch.phase);
             }
         }
     }
@@ -40,13 +36,13 @@ public class PlayerMove : MonoBehaviour
         transform.DOMoveX(_xPosition, 0.05f).SetEase(Ease.InCirc);
     }
 
-    public void DropCube()
+    public void DropCube(TouchPhase phase)
     {
         Move();
-        if (touch.phase == TouchPhase.Ended)
+        if (phase == TouchPhase.Ended)
         {
-            Drop?.Invoke();
             IsDroped = true;
+            Drop?.Invoke();
         }
     }
 }

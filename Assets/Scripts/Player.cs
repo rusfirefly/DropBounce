@@ -13,14 +13,36 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerMove _move;
     [SerializeField] private CoinPool _coinPool;
     [SerializeField] private Ease _effect;
+    [SerializeField] private Transform _reloadDrop;
+    [SerializeField] private ParticleSystem _effectDie;
 
+    private TrailRenderer _trailRender;
     private int _score;
     private float _yHomePosition;
+    private float _currentTime;
+    private float _timeDrop = 5f;
+    private Vector3 _scale;
+    private bool _isDrope;
 
     private void Start()
     {
-        _yHomePosition = transform.position.y;
-        _score = 0;
+        _trailRender = GetComponent<TrailRenderer>();
+        OnNewGame();
+    }
+
+    private void Update()
+    {
+        if (_isDrope == true) return;
+        _currentTime += Time.deltaTime;
+        _scale.x = _scale.y = (9 - _currentTime) / 3f;
+        _reloadDrop.localScale = _scale;
+
+        if (_currentTime >= _timeDrop)
+        {
+            _move.DropCube(TouchPhase.Ended);
+            _isDrope = true;
+            _currentTime = 0;
+        }
     }
 
     private void OnEnable()
@@ -28,6 +50,7 @@ public class Player : MonoBehaviour
         _move.Drop += OnDrop;
         LevelHandler.NewGame += OnNewGame;
     }
+
     private void OnDisable()
     {
         _move.Drop -= OnDrop;
@@ -36,8 +59,15 @@ public class Player : MonoBehaviour
 
     private void OnNewGame()
     {
+        _yHomePosition = transform.position.y;
         _score = 0;
-        
+        _scale = new Vector3(3, 3, 0.1f);
+        _reloadDrop.localScale = _scale;
+        if (_effectDie)
+        {
+            if (_effectDie.isPlaying)
+                _effectDie.Stop();
+        }
     }
 
     private void OnValidate()
@@ -51,18 +81,30 @@ public class Player : MonoBehaviour
         {
             transform.DOMoveY(_yHomePosition, 0.2f).SetEase(_effect);
             _rigidbody.isKinematic = true;
+            _reloadDrop.gameObject.SetActive(true);
         }
-
+        else
         if (collision.gameObject.tag == "Home")
         {
             _move.IsDroped = false;
+            _isDrope = false;
+            _currentTime = 0;
         }
-
+        else
         if (collision.gameObject.tag == "Enemy")
         {
-            //Invoke("Die",1.5f);
-            OnDie();
-            //Destroy(gameObject);
+            _effectDie.transform.position = collision.gameObject.transform.position;
+            gameObject.transform.localScale = new Vector3(0,0,0);
+
+            if (_trailRender)
+                _trailRender.enabled = false;
+
+            if (_effectDie.isPlaying == false)
+                _effectDie.Play();
+
+
+            Invoke("OnDie",2);
+            //OnDie();
         }
     }
 
@@ -93,9 +135,11 @@ public class Player : MonoBehaviour
 
     private void OnDrop()
     {
-        if(_rigidbody)
+        _reloadDrop.gameObject.SetActive(false);
+        if (_rigidbody)
         {
             _rigidbody.isKinematic = false;
         }
+        
     }
 }

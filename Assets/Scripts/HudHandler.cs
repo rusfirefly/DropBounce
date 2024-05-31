@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 
 public class HudHandler : MonoBehaviour
 {
@@ -8,7 +8,7 @@ public class HudHandler : MonoBehaviour
     [SerializeField] private ColorChange _colorChange;
     [SerializeField] private Text _bestScoreText;
     [SerializeField] private Text _currentScoreText;
-    [SerializeField] private GameObject _gameOverWindow;
+    [SerializeField] private RectTransform _gameOverWindow;
 
     private int _currentScore;
 
