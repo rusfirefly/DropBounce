@@ -16,10 +16,10 @@ MonoBehaviour:
   playerPhotoSize: 0
   autoGameReadyAPI: 1
   playerInfoSimulation:
-    authorized: 0
+    authorized: 1
     isMobile: 1
     language: en
-    name: Player this
+    name: Firefly
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
   AdWhenLoadingScene: 1

@@ -16,15 +16,13 @@ public class PlayerMove : MonoBehaviour
     
     private void TouchInput()
     {
+        if (IsDroped) return;
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             _xPosition = touchPosition.x;
-            if (IsDroped == false)
-            {
-                DropCube(touch.phase);
-            }
+            DropCube(touch.phase);
         }
     }
 

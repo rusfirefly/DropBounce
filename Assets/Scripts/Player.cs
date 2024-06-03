@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _reloadDrop;
     [SerializeField] private ParticleSystem _effectDie;
 
+    [SerializeField] private AudioSource _audioDrop;
+    [SerializeField] private AudioSource _audioCollected;
+    [SerializeField] private AudioSource _audioGameOver;
+
     private TrailRenderer _trailRender;
     private int _score;
     private float _yHomePosition;
@@ -23,16 +27,19 @@ public class Player : MonoBehaviour
     private float _timeDrop = 5f;
     private Vector3 _scale;
     private bool _isDrope;
+    private bool _isHome;
 
     private void Start()
     {
         _trailRender = GetComponent<TrailRenderer>();
+        _isHome = true;
         OnNewGame();
     }
 
     private void Update()
     {
         if (_isDrope == true) return;
+
         _currentTime += Time.deltaTime;
         _scale.x = _scale.y = (9 - _currentTime) / 3f;
         _reloadDrop.localScale = _scale;
@@ -80,15 +87,20 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             transform.DOMoveY(_yHomePosition, 0.2f).SetEase(_effect);
-            _rigidbody.isKinematic = true;
-            _reloadDrop.gameObject.SetActive(true);
+            _isHome = false;
         }
         else
         if (collision.gameObject.tag == "Home")
         {
-            _move.IsDroped = false;
-            _isDrope = false;
-            _currentTime = 0;
+            if (_isHome == false)
+            {
+                _reloadDrop.gameObject.SetActive(true);
+                _rigidbody.isKinematic = true;
+                _move.IsDroped = false;
+                _isDrope = false;
+                _currentTime = 0;
+                _isHome = true;
+            }
         }
         else
         if (collision.gameObject.tag == "Enemy")
@@ -102,19 +114,18 @@ public class Player : MonoBehaviour
             if (_effectDie.isPlaying == false)
                 _effectDie.Play();
 
-
+            PlaySound(_audioGameOver);
             Invoke("OnDie",2);
-            //OnDie();
         }
     }
 
     private void OnDie()
     {
-        Debug.Log("GAME OVER!");
         int bestScore = YandexGame.savesData.Score;
 
         if (_score > bestScore)
         {
+            YandexGame.NewLeaderboardScores("TEST", _score);
             YandexGame.savesData.Score = _score;
             YandexGame.SaveProgress();
         }
@@ -127,6 +138,7 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.tag == "Coin")
         {
+            PlaySound(_audioCollected);
             _score++;
             _coinPool.ReturnObjecToPool(other.gameObject);
             CollectedCoin?.Invoke(_score);
@@ -135,11 +147,18 @@ public class Player : MonoBehaviour
 
     private void OnDrop()
     {
+        PlaySound(_audioDrop);
         _reloadDrop.gameObject.SetActive(false);
         if (_rigidbody)
         {
             _rigidbody.isKinematic = false;
         }
         
+    }
+
+    private void PlaySound(AudioSource source)
+    {
+        if(source.isPlaying == false)
+            source.Play();
     }
 }

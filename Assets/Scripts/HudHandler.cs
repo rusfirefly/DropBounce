@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
+using TMPro;
 
 public class HudHandler : MonoBehaviour
 {
-    [SerializeField] private Text _scoreText;
+    [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private ColorChange _colorChange;
-    [SerializeField] private Text _bestScoreText;
-    [SerializeField] private Text _currentScoreText;
+    [SerializeField] private TMP_Text _bestScoreText;
+    [SerializeField] private TMP_Text _currentScoreText;
     [SerializeField] private RectTransform _gameOverWindow;
 
     private int _currentScore;
@@ -47,5 +47,5 @@ public class HudHandler : MonoBehaviour
     {
         _bestScoreText.text = $"{score}";
     }
-
+    
 }

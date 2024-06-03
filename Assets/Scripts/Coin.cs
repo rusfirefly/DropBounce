@@ -7,14 +7,14 @@ public class Coin : MonoBehaviour
     [SerializeField] private Transform _endPosition;
     [SerializeField] private float _distance;
     private bool _isMove;
-    private float _speed;
+    [SerializeField] private float _speed;
     private int _number;
 
     public void Inizialize(Transform positionend)
     {
         _endPosition = positionend;
         _isMove = true;
-        _speed = 0.1f;
+        //_speed = 0.1f;
     }
 
     private void Update()
@@ -28,6 +28,6 @@ public class Coin : MonoBehaviour
             _isMove = false;
         }
 
-        transform.Translate(Vector3.left * Time.deltaTime * (Mathf.Abs(_speed - distance)));
+        transform.Translate(Vector3.left * Time.deltaTime * (Mathf.Abs(_speed - distance))/2);
     }
 }

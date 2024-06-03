@@ -27,7 +27,7 @@ public class Spawn : MonoBehaviour
     {
         _randomCoin = new Random();
         GetObject();
-        _nextCoin = _randomCoin.Next(1, 4);
+        _nextCoin = _randomCoin.Next(1, 5);
     }
 
     public void Update()
@@ -41,7 +41,7 @@ public class Spawn : MonoBehaviour
                 if ((_numberCoin % _nextCoin) == 0)
                 {
                     GetCoin();
-                    _nextCoin = _randomCoin.Next(1, 4);
+                    _nextCoin = _randomCoin.Next(1, 5);
                     _numberCoin = 0;
                 }
 
@@ -57,8 +57,6 @@ public class Spawn : MonoBehaviour
             _currentTime -= _spawnTime;
             _spawnTime = _randomCoin.Next(1, 3);
         }
-
-
     }
 
     private void OnValidate()
