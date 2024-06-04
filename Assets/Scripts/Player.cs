@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             _effectDie.transform.position = collision.gameObject.transform.position;
-            gameObject.transform.localScale = new Vector3(0,0,0);
+            gameObject.transform.localScale = Vector3.zero; //new Vector3(0,0,0);
 
             if (_trailRender)
                 _trailRender.enabled = false;
