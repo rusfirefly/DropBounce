@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource _audioDrop;
     [SerializeField] private AudioSource _audioCollected;
     [SerializeField] private AudioSource _audioGameOver;
+    [SerializeField] private SaveHandler _saveHandler;
 
     private TrailRenderer _trailRender;
     private int _score;
@@ -32,6 +33,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _trailRender = GetComponent<TrailRenderer>();
+        _saveHandler = FindAnyObjectByType<SaveHandler>();
+
         _isHome = true;
         OnNewGame();
     }
@@ -126,8 +129,7 @@ public class Player : MonoBehaviour
         if (_score > bestScore)
         {
             YandexGame.NewLeaderboardScores("TEST", _score);
-            YandexGame.savesData.Score = _score;
-            YandexGame.SaveProgress();
+            _saveHandler.SaveScore(_score);
         }
 
         Die?.Invoke();

@@ -583,6 +583,7 @@ MonoBehaviour:
   _audioDrop: {fileID: 1482258990}
   _audioCollected: {fileID: 778975603}
   _audioGameOver: {fileID: 747617648}
+  _saveHandler: {fileID: 0}
 --- !u!54 &102478975
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1245,6 +1246,9 @@ MonoBehaviour:
   _enemyPool: {fileID: 823616094}
   _coinPool: {fileID: 520419382}
   _spawn: {fileID: 701261049}
+  _sound: {fileID: 2074754967}
+  _saveHandler: {fileID: 473126846}
+  _ads: {fileID: 1943572205}
 --- !u!4 &327333073
 Transform:
   m_ObjectHideFlags: 0
@@ -1335,6 +1339,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328782659}
   m_CullTransparentMesh: 1
+--- !u!1 &473126845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 473126847}
+  - component: {fileID: 473126846}
+  m_Layer: 0
+  m_Name: SaveHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &473126846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473126845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef552de24edf5a345b96aa87e186e062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &473126847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473126845}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1229.9858, y: 1189.1833, z: -7.117578}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &520419380
 GameObject:
   m_ObjectHideFlags: 0
@@ -8501,7 +8549,7 @@ GameObject:
   - component: {fileID: 1484006455}
   - component: {fileID: 1484006454}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: ResetSaveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8571,8 +8619,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1022277645}
-        m_TargetAssemblyTypeName: LevelHandler, Assembly-CSharp
+      - m_Target: {fileID: 473126846}
+        m_TargetAssemblyTypeName: SaveHandler, Assembly-CSharp
         m_MethodName: ResetSave
         m_Mode: 1
         m_Arguments:
@@ -9222,6 +9270,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRender: {fileID: 1755832389}
+--- !u!1 &1943572204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1943572206}
+  - component: {fileID: 1943572205}
+  m_Layer: 0
+  m_Name: ADS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1943572205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943572204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5616226425df3214aa4c44e07dfa39b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+--- !u!4 &1943572206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943572204}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3907589, y: 0.7991305, z: 174.17764}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1963440457
 GameObject:
   m_ObjectHideFlags: 0
@@ -9693,6 +9786,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 327333073}
+  - {fileID: 2074754968}
+  - {fileID: 473126847}
   - {fileID: 1022277644}
   - {fileID: 963194228}
   - {fileID: 705507995}
@@ -9705,7 +9800,7 @@ SceneRoots:
   - {fileID: 823616093}
   - {fileID: 520419381}
   - {fileID: 701261048}
-  - {fileID: 213083082}
   - {fileID: 677752079}
   - {fileID: 1755832391}
-  - {fileID: 2074754968}
+  - {fileID: 1943572206}
+  - {fileID: 213083082}

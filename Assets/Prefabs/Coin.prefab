@@ -119,5 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endPosition: {fileID: 0}
-  _distance: 0.2
+  _distance: 1.3
   _speed: 1

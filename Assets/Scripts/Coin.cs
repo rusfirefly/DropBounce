@@ -14,7 +14,6 @@ public class Coin : MonoBehaviour
     {
         _endPosition = positionend;
         _isMove = true;
-        //_speed = 0.1f;
     }
 
     private void Update()

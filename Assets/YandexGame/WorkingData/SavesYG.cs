@@ -11,6 +11,8 @@ namespace YG
         public bool promptDone;
 
         public int Score;
+        public bool IsSound;
+        public bool IsADS;
 
         public SavesYG()
         {
