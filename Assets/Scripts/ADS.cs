@@ -10,6 +10,7 @@ public class ADS : MonoBehaviour
     public void Initialize(SaveHandler saveHandler)
     {
         _saveHandler = saveHandler;
+        YandexGame.ConsumePurchases();
         _isADS = _saveHandler.IsADS;
 
         if(_isADS == false)
@@ -25,4 +26,8 @@ public class ADS : MonoBehaviour
         _infoYG.showFirstAd = false;
     }
 
+    public void ByeDisableADS()
+    {
+
+    }
 }

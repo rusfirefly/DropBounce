@@ -38,6 +38,9 @@ public class Bootstrap : MonoBehaviour
 
         _sound.Initialize(soundVolume);
         Time.timeScale = 1;
+
+
         _ads.Initialize(_saveHandler);
+
     }
 }
