@@ -4,30 +4,31 @@ using YG;
 public class ADS : MonoBehaviour
 {
     [SerializeField] private InfoYG _infoYG;
+
     private SaveHandler _saveHandler;
     private bool _isADS;
 
     public void Initialize(SaveHandler saveHandler)
     {
         _saveHandler = saveHandler;
-        YandexGame.ConsumePurchases();
         _isADS = _saveHandler.IsADS;
 
-        if(_isADS == false)
-            YandexGame.StickyAdActivity(true);
-
-        SetVisibleADS();
+        if (_isADS == false)
+        {
+            HideADS();
+        }
     }
 
-
-    private void SetVisibleADS()
+    private void HideADS()
     {
+        YandexGame.StickyAdActivity(false);
         _infoYG.AdWhenLoadingScene = false;
         _infoYG.showFirstAd = false;
     }
 
-    public void ByeDisableADS()
+    public void RemoveADS()
     {
-
+        _isADS = true;
+        _saveHandler.SaveBuyNoADS();
     }
 }

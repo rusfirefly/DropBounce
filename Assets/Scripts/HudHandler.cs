@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class HudHandler : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class HudHandler : MonoBehaviour
     [SerializeField] private TMP_Text _bestScoreText;
     [SerializeField] private TMP_Text _currentScoreText;
     [SerializeField] private RectTransform _gameOverWindow;
+    [SerializeField] private RectTransform _payments;
+    [SerializeField] private Button _removeADSButton;
 
     private int _currentScore;
 
@@ -48,4 +51,10 @@ public class HudHandler : MonoBehaviour
         _bestScoreText.text = $"{score}";
     }
     
+    public void ShowWindowPayments(float scale, float duration)
+    {
+        _payments.transform.DOScale(scale, duration);
+    }
+
+    public void HideBuyADSButton()=> _removeADSButton.gameObject.SetActive(false);  
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using YG;
 
@@ -42,5 +43,24 @@ public class Bootstrap : MonoBehaviour
 
         _ads.Initialize(_saveHandler);
 
+    }
+
+    private void OnEnable()
+    {
+        YandexGame.PurchaseSuccessEvent += SuccessPurchased;
+    }
+
+    private void OnDisable()
+    {
+        YandexGame.PurchaseSuccessEvent -= SuccessPurchased;
+    }
+
+    private void SuccessPurchased(string id)
+    {
+        switch(id)
+        {
+            case "777": _ads.RemoveADS();
+            break;
+        }
     }
 }

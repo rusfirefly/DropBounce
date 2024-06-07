@@ -30,11 +30,6 @@ public class LevelHandler : MonoBehaviour
         YandexGame.ReviewShow(true);
     }
 
-    public void DisableABS()
-    {
-
-    }
-
     public void StartNewGame()
     {
         SceneManager.LoadScene(0);

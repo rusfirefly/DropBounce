@@ -320,7 +320,7 @@ MonoBehaviour:
     imageURI: https://justplaygames.ru/public/Paymant3.png
     priceValue: 30
     consumed: 1
-  - id: noADS
+  - id: 777
     title: no ADS
     description: Disables Advertising
     imageURI: https://images.samsung.com/is/image/samsung/assets/uk/support/mobile-devices/how-to-remove-ads-from-a-galaxy-smartphone/images/0-how-to-remove-ads-from-a-galaxy-smartphone.png?$ORIGIN_PNG$
