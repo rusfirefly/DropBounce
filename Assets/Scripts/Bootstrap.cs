@@ -11,6 +11,7 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private Sound _sound;
     [SerializeField] private SaveHandler _saveHandler;
     [SerializeField] private ADS _ads;
+    [SerializeField] private HudHandler _hudHandler;
 
     private void Start()
     {
@@ -42,7 +43,10 @@ public class Bootstrap : MonoBehaviour
 
 
         _ads.Initialize(_saveHandler);
-
+        if(_saveHandler.IsADS)
+        {
+            _hudHandler.SetSoldButton();
+        }
     }
 
     private void OnEnable()
@@ -59,7 +63,9 @@ public class Bootstrap : MonoBehaviour
     {
         switch(id)
         {
-            case "777": _ads.RemoveADS();
+            case "777":
+                _hudHandler.ShowSoldWindow();
+                _ads.RemoveADS();
             break;
         }
     }

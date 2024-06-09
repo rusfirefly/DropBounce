@@ -13,17 +13,21 @@ public class ADS : MonoBehaviour
         _saveHandler = saveHandler;
         _isADS = _saveHandler.IsADS;
 
-        if (_isADS == false)
+        if (_isADS)
         {
-            HideADS();
+            SetVibleADS(false);
+        }
+        else
+        {
+            SetVibleADS(true);
         }
     }
 
-    private void HideADS()
+    private void SetVibleADS(bool visible)
     {
-        YandexGame.StickyAdActivity(false);
-        _infoYG.AdWhenLoadingScene = false;
-        _infoYG.showFirstAd = false;
+        YandexGame.StickyAdActivity(visible);
+        _infoYG.AdWhenLoadingScene = visible;
+        _infoYG.showFirstAd = visible;
     }
 
     public void RemoveADS()

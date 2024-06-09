@@ -11,7 +11,11 @@ public class HudHandler : MonoBehaviour
     [SerializeField] private TMP_Text _currentScoreText;
     [SerializeField] private RectTransform _gameOverWindow;
     [SerializeField] private RectTransform _payments;
+    [SerializeField] private RectTransform _sold;
+
     [SerializeField] private Button _removeADSButton;
+    [SerializeField] private Image _removeADSImage;
+    [SerializeField] private Sprite _imageSold;
 
     private int _currentScore;
 
@@ -32,6 +36,7 @@ public class HudHandler : MonoBehaviour
         SetVisibleGameOver(true);
         SetCurrentScore(_currentScore);
         ShowBestScore(YG.YandexGame.savesData.Score);
+
     }
 
     public void SetVisibleGameOver(bool isVisible) => _gameOverWindow.gameObject.SetActive(isVisible);
@@ -56,5 +61,11 @@ public class HudHandler : MonoBehaviour
         _payments.transform.DOScale(scale, duration);
     }
 
-    public void HideBuyADSButton()=> _removeADSButton.gameObject.SetActive(false);  
+    public void ShowSoldWindow() => _sold.gameObject.SetActive(true);
+
+    public void SetSoldButton()
+    {
+        _removeADSButton.interactable = false;
+        _removeADSImage.sprite = _imageSold;
+    }
 }

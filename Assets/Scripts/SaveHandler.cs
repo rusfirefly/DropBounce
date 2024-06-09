@@ -32,7 +32,7 @@ public class SaveHandler : MonoBehaviour
 
     public void SaveBuyNoADS()
     {
-        YandexGame.savesData.IsADS = true;
+        YandexGame.savesData.IsADS = false;
         Save();
     }
 

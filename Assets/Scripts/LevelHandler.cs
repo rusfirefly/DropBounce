@@ -14,8 +14,6 @@ public class LevelHandler : MonoBehaviour
         SavesYG data = YandexGame.savesData;
         if(data != null)
             _hudHandler.SetCurrentScore(data.Score);
-
-        
     }
 
     public void MusicOff()
