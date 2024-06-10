@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private Vector3 _scale;
     private bool _isDrope;
     private bool _isHome;
+    private bool _isDie;
 
     private void Start()
     {
@@ -138,6 +139,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_isDie) return;
+
         if(other.gameObject.tag == "Coin")
         {
             PlaySound(_audioCollected);

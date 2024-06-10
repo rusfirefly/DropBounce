@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using YG;
 
 public class HudHandler : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class HudHandler : MonoBehaviour
     [SerializeField] private Image _removeADSImage;
     [SerializeField] private Sprite _imageSold;
 
+    [SerializeField] private RectTransform _authWindow;
+    [SerializeField] private RectTransform _authOk;
+    [SerializeField] private RectTransform _authNo;
+    [SerializeField] private TMP_Text _authInfo;
+    [SerializeField] private Button _authButton;
+    [SerializeField] private ImageLoadYG _loadYG;
     private int _currentScore;
 
     private void OnEnable()
@@ -68,4 +75,31 @@ public class HudHandler : MonoBehaviour
         _removeADSButton.interactable = false;
         _removeADSImage.sprite = _imageSold;
     }
+
+    public void ShowAuthWindow()
+    {
+        bool noAuth = true;
+        bool auth = false;
+
+        if (YandexGame.auth)
+        {
+            noAuth = false;
+            auth = true;
+            _authInfo.text = $"Login: {YandexGame.playerName}\n" +
+                             $"Score: {YandexGame.savesData.Score}";
+
+        }
+
+        _authOk.gameObject.SetActive(auth);
+        _authNo.gameObject.SetActive(noAuth);
+        _authButton.interactable = noAuth;
+
+        if(auth)
+        {
+           _loadYG.urlImage = YandexGame.playerPhoto;
+           _loadYG.Load();
+        }
+    }
+
+    public void StartAuthDialog() => YandexGame.AuthDialog();
 }
