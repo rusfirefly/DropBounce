@@ -14,6 +14,8 @@ public class HudHandler : MonoBehaviour
     [SerializeField] private RectTransform _payments;
     [SerializeField] private RectTransform _sold;
 
+    [SerializeField] private RectTransform _soudnOnOff;
+
     [SerializeField] private Button _removeADSButton;
     [SerializeField] private Image _removeADSImage;
     [SerializeField] private Sprite _imageSold;

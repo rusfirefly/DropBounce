@@ -35,7 +35,7 @@ public class Bootstrap : MonoBehaviour
         {
             Debug.Log("load data");
             _saveHandler.Initialize();
-            soundVolume = YandexGame.savesData.IsSound ? soundVolume = 1 : soundVolume = 0;
+            soundVolume = YandexGame.savesData.IsSound ? soundVolume = 0 : soundVolume = -80;
         }
 
         _sound.Initialize(soundVolume);

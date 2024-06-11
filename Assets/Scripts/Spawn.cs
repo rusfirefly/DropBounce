@@ -22,12 +22,17 @@ public class Spawn : MonoBehaviour
     private Random _randomCoin;
     private int _nextCoin;
     private const float _yOffsetCoin = -1.067f;
+    private int _difficulty = 3;
+    private int _spawnCoinNumber = 0;
+    private int _difficultyCoin = 3;
+    private bool _isDifficul;
+    private int _upDificul = 7;
 
     public void Initialize()
     {
         _randomCoin = new Random();
         GetObject();
-        _nextCoin = _randomCoin.Next(1, 5);
+        _nextCoin = _randomCoin.Next(1, _difficultyCoin);
     }
 
     public void Update()
@@ -41,7 +46,12 @@ public class Spawn : MonoBehaviour
                 if ((_numberCoin % _nextCoin) == 0)
                 {
                     GetCoin();
-                    _nextCoin = _randomCoin.Next(1, 5);
+                    _nextCoin = _randomCoin.Next(1, _difficultyCoin);
+                    _spawnCoinNumber++;
+                    if(_spawnCoinNumber != 0 && (_spawnCoinNumber % _upDificul == 0))
+                    {
+                        _isDifficul = true;
+                    }
                     _numberCoin = 0;
                 }
 
@@ -50,12 +60,28 @@ public class Spawn : MonoBehaviour
             }
         }
 
+        DifficulUp();
+
         if (_currentTime>=_spawnTime)
         {
             GetObject();
             _isCoin = false;
             _currentTime -= _spawnTime;
-            _spawnTime = _randomCoin.Next(1, 3);
+            _spawnTime = _randomCoin.Next(_difficulty, 5);
+        }
+    }
+
+
+    private void DifficulUp()
+    {
+        if (_isDifficul)
+        {
+            if (_difficulty > 1)
+            {
+                _difficulty--;
+                _difficultyCoin++;
+            }
+            _isDifficul = false;
         }
     }
 
