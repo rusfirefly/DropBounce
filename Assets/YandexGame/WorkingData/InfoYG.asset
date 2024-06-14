@@ -33,7 +33,7 @@ MonoBehaviour:
   saveCloud: 1
   flush: 0
   localSaveSync: 1
-  saveCloudInterval: 5
+  saveCloudInterval: 2
   saveOnQuitGame: 0
   quitGameParameters:
     objectName: YandexGame
@@ -128,6 +128,76 @@ MonoBehaviour:
       score: 50
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 321
+    - rank: 6
+      name: player6
+      score: 50
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 7
+      name: player61
+      score: 60
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 322
+    - rank: 8
+      name: player67
+      score: 70
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 323
+    - rank: 9
+      name: 7
+      score: 80
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 324
+    - rank: 10
+      name: 7k
+      score: 90
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 325
+    - rank: 11
+      name: player6
+      score: 100
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 326
+    - rank: 12
+      name: player6
+      score: 110
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 327
+    - rank: 13
+      name: player6
+      score: 120
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 328
+    - rank: 14
+      name: player6
+      score: 130
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 15
+      name: player6
+      score: 50
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 329
+    - rank: 16
+      name: ddrt
+      score: 140
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 330
+    - rank: 17
+      name: tyui
+      score: 150
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 331
+    - rank: 18
+      name: fgh
+      score: 160
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 332
+    - rank: 19
+      name: player6hht
+      score: 70
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 333
     thisPlayer:
       rank: 0
       score: 0
