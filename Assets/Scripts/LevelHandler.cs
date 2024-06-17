@@ -17,15 +17,8 @@ public class LevelHandler : MonoBehaviour
             _hudHandler.SetCurrentScore(data.Score);
     }
 
-    public void MusicOff()
-    {
-        Debug.Log("MusicOff");
-
-    }
-
     public void RateGame()
     {
-        Debug.Log("окно оценки игры");
         YandexGame.ReviewShow(true);
     }
 

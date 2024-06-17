@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
 
         if (_score > bestScore)
         {
-            YandexGame.NewLeaderboardScores("TEST", _score);
+            YandexGame.NewLeaderboardScores("LeaderBoard", _score);
             _saveHandler.SaveScore(_score);
         }
 

@@ -14,7 +14,9 @@ public class HudHandler : MonoBehaviour
     [SerializeField] private RectTransform _payments;
     [SerializeField] private RectTransform _sold;
 
-    [SerializeField] private Image _soudnOnOff;
+    [SerializeField] private Sprite _soundOnImage;
+    [SerializeField] private Sprite _soundOffImage;
+    [SerializeField] private Image _soundImage;
 
     [SerializeField] private Button _removeADSButton;
     [SerializeField] private Image _removeADSImage;
@@ -44,8 +46,8 @@ public class HudHandler : MonoBehaviour
     {
         SetVisibleGameOver(true);
         SetCurrentScore(_currentScore);
-        ShowBestScore(YG.YandexGame.savesData.Score);
-
+        ShowBestScore(YandexGame.savesData.Score);
+        ChangeImageSound(YandexGame.savesData.IsSound);
     }
 
     public void SetVisibleGameOver(bool isVisible) => _gameOverWindow.gameObject.SetActive(isVisible);
@@ -105,8 +107,13 @@ public class HudHandler : MonoBehaviour
 
     public void StartAuthDialog() => YandexGame.AuthDialog();
 
-    public void SetImageSound(Sprite image)
+    public void ChangeImageSound(bool isSound)
     {
-        _soudnOnOff.sprite = image;
+        Sprite image = _soundOffImage;
+
+        if(isSound)
+            image = _soundOnImage;
+
+        _soundImage.sprite = image;
     }
 }
