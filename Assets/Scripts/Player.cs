@@ -59,13 +59,13 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         _move.Drop += OnDrop;
-        LevelHandler.NewGame += OnNewGame;
+       // LevelHandler.NewGame += OnNewGame;
     }
 
     private void OnDisable()
     {
         _move.Drop -= OnDrop;
-        LevelHandler.NewGame -= OnNewGame;
+        //LevelHandler.NewGame -= OnNewGame;
     }
 
     private void OnNewGame()
@@ -109,8 +109,9 @@ public class Player : MonoBehaviour
         else
         if (collision.gameObject.tag == "Enemy")
         {
+            _isDie = true;
             _effectDie.transform.position = collision.gameObject.transform.position;
-            gameObject.transform.localScale = Vector3.zero; //new Vector3(0,0,0);
+            gameObject.transform.localScale = Vector3.zero; 
 
             if (_trailRender)
                 _trailRender.enabled = false;

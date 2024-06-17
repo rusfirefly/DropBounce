@@ -14,7 +14,7 @@ public class HudHandler : MonoBehaviour
     [SerializeField] private RectTransform _payments;
     [SerializeField] private RectTransform _sold;
 
-    [SerializeField] private RectTransform _soudnOnOff;
+    [SerializeField] private Image _soudnOnOff;
 
     [SerializeField] private Button _removeADSButton;
     [SerializeField] private Image _removeADSImage;
@@ -53,7 +53,7 @@ public class HudHandler : MonoBehaviour
     private void OnCollectedCoin(int score)
     {
         _currentScore = score;
-        if (score % 15 == 0 && score != 0)
+        if (score % 10 == 0 && score != 0)
             _colorChange.SetColor(UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f));
         _scoreText.text = $"{score}";
     }
@@ -104,4 +104,9 @@ public class HudHandler : MonoBehaviour
     }
 
     public void StartAuthDialog() => YandexGame.AuthDialog();
+
+    public void SetImageSound(Sprite image)
+    {
+        _soudnOnOff.sprite = image;
+    }
 }

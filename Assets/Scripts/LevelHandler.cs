@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using YG;
 
 public class LevelHandler : MonoBehaviour
 {
-    public static event Action NewGame;
+    //public static event Action NewGame;
     [SerializeField] private HudHandler _hudHandler;
     [SerializeField] private LeaderboardYG _leaderBoard;
  
@@ -37,4 +38,6 @@ public class LevelHandler : MonoBehaviour
     {
         _leaderBoard.UpdateLB();
     }
+
+
 }

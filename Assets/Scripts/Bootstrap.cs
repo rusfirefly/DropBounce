@@ -12,6 +12,7 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private SaveHandler _saveHandler;
     [SerializeField] private ADS _ads;
     [SerializeField] private HudHandler _hudHandler;
+    [SerializeField] private Tutorial _tutorial;
 
     private void Start()
     {
@@ -22,14 +23,17 @@ public class Bootstrap : MonoBehaviour
         float soundVolume = 1;
 
         SavesYG gameData = YandexGame.savesData;
+        Debug.Log(gameData.idSave);
         if (gameData == null)
         {
-            Debug.Log("new data");
-            gameData.Score = 0;
-            gameData.IsSound = true;
-            gameData.IsADS = false;
+            /* Debug.Log("new data");
+             gameData.Score = 0;
+             gameData.IsSound = true;
+             gameData.IsADS = false;
+             gameData.IsTutorial = true;
 
-            _saveHandler.NewSaveData(gameData);
+             _saveHandler.NewSaveData(gameData);
+            */
         }
         else
         {
@@ -41,12 +45,15 @@ public class Bootstrap : MonoBehaviour
         _sound.Initialize(soundVolume);
         Time.timeScale = 1;
 
-
         _ads.Initialize(_saveHandler);
+
         if(_saveHandler.IsADS)
         {
             _hudHandler.SetSoldButton();
         }
+
+        _tutorial.Initialized(_saveHandler);
+
     }
 
     private void OnEnable()

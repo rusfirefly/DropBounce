@@ -1,4 +1,6 @@
 ﻿
+using UnityEngine.Playables;
+
 namespace YG
 {
     [System.Serializable]
@@ -13,10 +15,14 @@ namespace YG
         public int Score;
         public bool IsSound;
         public bool IsADS;
+        public bool IsTutorial;
 
         public SavesYG()
         {
-
+            Score = 0;
+            IsSound = true;
+            IsADS = false;
+            IsTutorial = true;
         }
     }
 

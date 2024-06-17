@@ -8,8 +8,8 @@ public class Sound : MonoBehaviour
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private HudHandler _hudHandler;
 
-    [SerializeField] private Image _soundOnImage;
-    [SerializeField] private Image _soundOffImage;
+    [SerializeField] private Sprite _soundOnImage;
+    [SerializeField] private Sprite _soundOffImage;
 
 
     private bool _isSoundOn;
@@ -22,20 +22,25 @@ public class Sound : MonoBehaviour
     public void ChangeSoundVolume()
     {
         _isSoundOn = !_isSoundOn;
+        Sprite image = _soundOnImage;
         float volume = 0;
 
-        if(_isSoundOn == false)
+        if (_isSoundOn == false)
+        {
             volume = -80;
+           image = _soundOffImage;
+        }
+
+        _hudHandler.SetImageSound(image);
+        SetSoundVolume(volume);
 
         YandexGame.savesData.IsSound = _isSoundOn;
         YandexGame.SaveProgress();
-      
-        SetSoundVolume(volume);
+        
     }
     
     public void SetSoundVolume(float volume)
     {
-        Debug.Log(volume);
         _audioMixer.SetFloat("Volume", volume);
     }
 }

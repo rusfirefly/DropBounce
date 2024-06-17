@@ -7,6 +7,8 @@ public class SaveHandler : MonoBehaviour
 
     public bool IsSoundOn => YandexGame.savesData.IsSound;
 
+    public bool IsTutorial=>YandexGame.savesData.IsTutorial;
+
     public void NewSaveData(SavesYG saveData)
     {
         YandexGame.savesData = saveData;
@@ -43,8 +45,14 @@ public class SaveHandler : MonoBehaviour
     
     }
 
-    
-    private void Save() => YandexGame.SaveProgress();
+    public void SetHideTutorial()
+    {
+        YandexGame.savesData.IsTutorial = false;
+        Save();
+    }
 
+    private void Save() => YandexGame.SaveProgress();
+    
+    
 
 }

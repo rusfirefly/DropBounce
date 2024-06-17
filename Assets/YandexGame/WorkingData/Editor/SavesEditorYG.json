@@ -1,9 +1,10 @@
 {
-  "idSave": 4,
+  "idSave": 474,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
-  "Score": 12,
+  "Score": 2,
   "IsSound": false,
-  "IsADS": false
+  "IsADS": false,
+  "IsTutorial": false
 }
