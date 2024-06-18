@@ -20,10 +20,8 @@ public class Bootstrap : MonoBehaviour
         _coinPool.Initialize();
         _spawn.Initialize();
 
-        float soundVolume = 1;
-
         SavesYG gameData = YandexGame.savesData;
-        Debug.Log(gameData.idSave);
+
         if (gameData == null)
         {
             /* Debug.Log("new data");
@@ -39,7 +37,6 @@ public class Bootstrap : MonoBehaviour
         {
             Debug.Log("load data");
             _saveHandler.Initialize();
-           // soundVolume = YandexGame.savesData.IsSound ? soundVolume = 0 : soundVolume = -80;
         }
 
         _sound.Initialize(YandexGame.savesData.IsSound);
@@ -47,7 +44,7 @@ public class Bootstrap : MonoBehaviour
 
         _ads.Initialize(_saveHandler);
 
-        if(_saveHandler.IsADS)
+        if(_saveHandler.IsADS == false)
         {
             _hudHandler.SetSoldButton();
         }
@@ -72,6 +69,7 @@ public class Bootstrap : MonoBehaviour
         {
             case "777":
                 _hudHandler.ShowSoldWindow();
+                _hudHandler.SetSoldButton();
                 _ads.RemoveADS();
             break;
         }

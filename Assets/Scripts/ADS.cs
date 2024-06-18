@@ -12,15 +12,7 @@ public class ADS : MonoBehaviour
     {
         _saveHandler = saveHandler;
         _isADS = _saveHandler.IsADS;
-
-        if (_isADS)
-        {
-            SetVibleADS(false);
-        }
-        else
-        {
-            SetVibleADS(true);
-        }
+        SetVibleADS(_isADS);
     }
 
     private void SetVibleADS(bool visible)
@@ -32,7 +24,7 @@ public class ADS : MonoBehaviour
 
     public void RemoveADS()
     {
-        _isADS = true;
-        _saveHandler.SaveBuyNoADS();
+        _isADS = false;
+        _saveHandler.SaveBuyNoADS(_isADS);
     }
 }

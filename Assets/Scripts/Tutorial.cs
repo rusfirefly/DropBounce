@@ -6,6 +6,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject _tutorial;
     [SerializeField] private RectTransform[] _tutorials;
     [SerializeField] private GameObject _closeButton;
+    [SerializeField] private GameObject _eggFatigue;
 
     private SaveHandler _saveHandler;
     private int _numbreTutorial;
@@ -28,12 +29,20 @@ public class Tutorial : MonoBehaviour
             {
                 NextTutorial();
             }
+
             if (touch.phase == TouchPhase.Began && _numbreTutorial >= 1 && _numbreTutorial!=2)
             {
-                NextTutorial();
-
+                 NextTutorial();
             }
-            
+
+            if (_numbreTutorial == 1)
+            {
+                Invoke("ShowEgg", 1f);
+            }
+            else
+            {
+                SetVisibleEggFatigue(false);
+            }
         }
     }
 
@@ -92,4 +101,6 @@ public class Tutorial : MonoBehaviour
 
     }
 
+    private void SetVisibleEggFatigue(bool visible) => _eggFatigue.SetActive(visible);
+    private void ShowEgg()=> _eggFatigue.SetActive(true);
 }

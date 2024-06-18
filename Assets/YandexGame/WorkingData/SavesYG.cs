@@ -21,7 +21,7 @@ namespace YG
         {
             Score = 0;
             IsSound = true;
-            IsADS = false;
+            IsADS = true;
             IsTutorial = true;
         }
     }
