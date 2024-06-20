@@ -27,12 +27,14 @@ public class Spawn : MonoBehaviour
     private int _difficultyCoin = 3;
     private bool _isDifficul;
     private int _upDificul = 7;
-
+    private float _speed;
+ 
     public void Initialize()
     {
         _randomCoin = new Random();
         GetObject();
         _nextCoin = _randomCoin.Next(1, _difficultyCoin);
+        _speed = _enemy.GetComponent<ISpeeded>().GetSpeed(); 
     }
 
     public void Update()
@@ -62,7 +64,7 @@ public class Spawn : MonoBehaviour
 
         DifficulUp();
 
-        if (_currentTime>=_spawnTime)
+        if (_currentTime >= _spawnTime)
         {
             GetObject();
             _isCoin = false;
@@ -80,6 +82,9 @@ public class Spawn : MonoBehaviour
             {
                 _difficulty--;
                 _difficultyCoin++;
+                _speed -= 0.2f;
+                _coin.GetComponent<ISpeeded>().SetSpeed(_speed);
+                _enemy.GetComponent<ISpeeded>().SetSpeed(_speed);
             }
             _isDifficul = false;
         }
@@ -120,5 +125,7 @@ public class Spawn : MonoBehaviour
         position.y = _yOffsetCoin;
         _coin = _coinPool.GetObjectFromPool(position, Quaternion.identity).GetComponent<Coin>();
         _coin.Inizialize(_positionEnd);
+
+        //_speed = _coin.GetComponent<ISpeeded>().GetSpeed();
     }
 }

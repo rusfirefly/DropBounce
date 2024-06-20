@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using YG;
 
@@ -13,6 +12,7 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private ADS _ads;
     [SerializeField] private HudHandler _hudHandler;
     [SerializeField] private Tutorial _tutorial;
+    [SerializeField] private Languge _languge;
 
     private void Start()
     {
@@ -40,6 +40,8 @@ public class Bootstrap : MonoBehaviour
         }
 
         _sound.Initialize(YandexGame.savesData.IsSound);
+        _languge.CheakLanguage();
+
         Time.timeScale = 1;
 
         _ads.Initialize(_saveHandler);

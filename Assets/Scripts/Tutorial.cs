@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private RectTransform[] _tutorials;
     [SerializeField] private GameObject _closeButton;
     [SerializeField] private GameObject _eggFatigue;
+
 
     private SaveHandler _saveHandler;
     private int _numbreTutorial;
@@ -25,16 +27,17 @@ public class Tutorial : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            if(touch.phase == TouchPhase.Ended && _numbreTutorial == 0)
+
+            if (touch.phase == TouchPhase.Ended && _numbreTutorial == 0)
             {
                 NextTutorial();
             }
 
-            if (touch.phase == TouchPhase.Began && _numbreTutorial >= 1 && _numbreTutorial!=2)
+            if (touch.phase == TouchPhase.Began && _numbreTutorial >= 1 && _numbreTutorial != 2)
             {
-                 NextTutorial();
+                NextTutorial();
             }
-
+            
             if (_numbreTutorial == 1)
             {
                 Invoke("ShowEgg", 1f);
@@ -43,6 +46,7 @@ public class Tutorial : MonoBehaviour
             {
                 SetVisibleEggFatigue(false);
             }
+
         }
     }
 
@@ -50,12 +54,6 @@ public class Tutorial : MonoBehaviour
     {
         Player.CollectedCoin += OnCollectedCoin;
     }
-
-    private void OnDisable()
-    {
-       
-    }
-
     private void OnCollectedCoin(int coin)
     {
         NextTutorial();
