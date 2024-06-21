@@ -1,5 +1,4 @@
 using UnityEngine;
-using DG.Tweening;
 using System;
 
 public class Enemy : MonoBehaviour, ISpeeded
@@ -16,7 +15,6 @@ public class Enemy : MonoBehaviour, ISpeeded
     {
         _endPosition = positionend;
         _isMove = true;
-        //_speed = 0.1f;
     }
 
     private void Update()

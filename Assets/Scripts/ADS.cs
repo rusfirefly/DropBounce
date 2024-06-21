@@ -1,10 +1,13 @@
 using UnityEngine;
 using YG;
+using YG.Utils.Pay;
 
 public class ADS : MonoBehaviour
 {
     [SerializeField] private InfoYG _infoYG;
-
+    [SerializeField] private HudHandler _hudHandler;
+    [SerializeField] private LoadingImage _loadingImage;
+    
     private SaveHandler _saveHandler;
     private bool _isADS;
 
@@ -27,4 +30,16 @@ public class ADS : MonoBehaviour
         _isADS = false;
         _saveHandler.SaveBuyNoADS(_isADS);
     }
+
+    public void LoadInfo()
+    {
+        
+        Purchase[] purchases = YandexGame.purchases;
+        foreach (Purchase purchase in purchases)
+        {
+            _loadingImage.LoadImage(purchase.imageURI);
+            _hudHandler.LoadInfoPrice($"{purchase.priceValue}");
+        }
+    }
+
 }

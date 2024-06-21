@@ -126,6 +126,7 @@ public class Player : MonoBehaviour
 
     private void OnDie()
     {
+        YandexGame.LoadProgress();
         int bestScore = YandexGame.savesData.Score;
 
         if (_score > bestScore)

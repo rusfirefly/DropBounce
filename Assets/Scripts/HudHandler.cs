@@ -20,14 +20,17 @@ public class HudHandler : MonoBehaviour
 
     [SerializeField] private Button _removeADSButton;
     [SerializeField] private Image _removeADSImage;
+    [SerializeField] private TMP_Text _price;
     [SerializeField] private Sprite _imageSold;
 
     [SerializeField] private RectTransform _authWindow;
     [SerializeField] private RectTransform _authOk;
     [SerializeField] private RectTransform _authNo;
-    [SerializeField] private TMP_Text _authInfo;
+    [SerializeField] private TMP_Text _playerName;
+    [SerializeField] private TMP_Text _playerScore;
     [SerializeField] private Button _authButton;
-    [SerializeField] private ImageLoadYG _loadYG;
+    [SerializeField] private LoadingImage _loadingImage;
+
     private int _currentScore;
 
     private void OnEnable()
@@ -82,6 +85,11 @@ public class HudHandler : MonoBehaviour
 
     public void ShowAuthWindow()
     {
+        if(_authWindow.gameObject.activeInHierarchy == false)
+        {
+            _authWindow.gameObject.SetActive(true);
+        }
+
         bool noAuth = true;
         bool auth = false;
 
@@ -89,10 +97,10 @@ public class HudHandler : MonoBehaviour
         {
             noAuth = false;
             auth = true;
-            _authInfo.text = $"Login: {YandexGame.playerName}\n" +
-                             $"Score: {YandexGame.savesData.Score}";
-
         }
+
+        _playerName.text = $"{YandexGame.playerName}\n";
+        _playerScore.text = $"{YandexGame.savesData.Score}";
 
         _authOk.gameObject.SetActive(auth);
         _authNo.gameObject.SetActive(noAuth);
@@ -100,8 +108,9 @@ public class HudHandler : MonoBehaviour
 
         if(auth)
         {
-           _loadYG.urlImage = YandexGame.playerPhoto;
-           _loadYG.Load();
+            //_loadYG.urlImage = YandexGame.playerPhoto;
+            //_loadYG.Load();
+            _loadingImage.LoadImage(YandexGame.playerPhoto);
         }
     }
 
@@ -115,5 +124,10 @@ public class HudHandler : MonoBehaviour
             image = _soundOnImage;
 
         _soundImage.sprite = image;
+    }
+
+    public void LoadInfoPrice(string price)
+    {
+        _price.text = price;
     }
 }

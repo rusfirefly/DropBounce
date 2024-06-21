@@ -19,6 +19,7 @@ namespace YG
 
         public SavesYG()
         {
+            idSave = 0;
             Score = 0;
             IsSound = true;
             IsADS = true;

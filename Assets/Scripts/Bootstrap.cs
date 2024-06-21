@@ -14,31 +14,18 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private Tutorial _tutorial;
     [SerializeField] private Languge _languge;
 
+    private void Awake()
+    {
+        YandexGame.InitializationGame();
+        _saveHandler.Initialize();
+    }
+
     private void Start()
     {
         _enemyPool.Initialize();
         _coinPool.Initialize();
         _spawn.Initialize();
-
-        SavesYG gameData = YandexGame.savesData;
-
-        if (gameData == null)
-        {
-            /* Debug.Log("new data");
-             gameData.Score = 0;
-             gameData.IsSound = true;
-             gameData.IsADS = false;
-             gameData.IsTutorial = true;
-
-             _saveHandler.NewSaveData(gameData);
-            */
-        }
-        else
-        {
-            Debug.Log("load data");
-            _saveHandler.Initialize();
-        }
-
+        
         _sound.Initialize(YandexGame.savesData.IsSound);
         _languge.CheakLanguage();
 
@@ -54,6 +41,7 @@ public class Bootstrap : MonoBehaviour
         _tutorial.Initialized(_saveHandler);
 
     }
+
 
     private void OnEnable()
     {

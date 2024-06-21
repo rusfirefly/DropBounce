@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
@@ -56,6 +54,7 @@ public class Tutorial : MonoBehaviour
     }
     private void OnCollectedCoin(int coin)
     {
+        if (_numbreTutorial != 2) return;
         NextTutorial();
         Player.CollectedCoin -= OnCollectedCoin;
     }

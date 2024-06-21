@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using YG;
 
 public class LevelHandler : MonoBehaviour
@@ -9,7 +7,8 @@ public class LevelHandler : MonoBehaviour
     //public static event Action NewGame;
     [SerializeField] private HudHandler _hudHandler;
     [SerializeField] private LeaderboardYG _leaderBoard;
- 
+    [SerializeField] private PurchaseYG _purchaseYG; 
+
     private void Start()
     {
         SavesYG data = YandexGame.savesData;
@@ -19,7 +18,14 @@ public class LevelHandler : MonoBehaviour
 
     public void RateGame()
     {
-        YandexGame.ReviewShow(true);
+        if (YandexGame.auth == false)
+        {
+            _hudHandler.ShowAuthWindow();
+        }
+        else
+        {
+            YandexGame.ReviewShow(true);
+        }
     }
 
     public void StartNewGame()
@@ -32,5 +38,16 @@ public class LevelHandler : MonoBehaviour
         _leaderBoard.UpdateLB();
     }
 
+    public void BuyRemoveADS()
+    {
+        if (YandexGame.auth == false)
+        {
+            _hudHandler.ShowAuthWindow();
+        }
+        else
+        {
+            _purchaseYG.BuyPurchase();
+        }
+    }
 
 }

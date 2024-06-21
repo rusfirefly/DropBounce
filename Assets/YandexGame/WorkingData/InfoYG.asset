@@ -21,7 +21,7 @@ MonoBehaviour:
     language: ru
     name: Firefly
     uniqueID: 000
-    photo: https://justplaygames.ru/public/icon_player.png
+    photo: https://avatars.mds.yandex.net/get-yapic/50595/45JHCJsHaGwXmnOdXSWQ2KvGas-1/islands-200
   AdWhenLoadingScene: 1
   showFirstAd: 1
   rewardedAfterClosing: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
   loadAdWithDelaySimulation: 0
   testErrorOfRewardedAdsInEditor: 0
   saveCloud: 1
-  flush: 0
+  flush: 1
   localSaveSync: 1
   saveCloudInterval: 2
   saveOnQuitGame: 0
@@ -372,29 +372,11 @@ MonoBehaviour:
     de: 
     hi: 
   purshasesSimulation:
-  - id: gun
-    title: Gun
-    description: Product - Gun
-    imageURI: https://justplaygames.ru/public/Paymant1.png
-    priceValue: 5
-    consumed: 1
-  - id: armor
-    title: Armor
-    description: Product - Armor
-    imageURI: https://justplaygames.ru/public/Paymant2.png
-    priceValue: 10
-    consumed: 1
-  - id: grenade
-    title: Grenade
-    description: Product - Grenade
-    imageURI: https://justplaygames.ru/public/Paymant3.png
-    priceValue: 30
-    consumed: 1
   - id: 777
     title: no ADS
     description: Disables Advertising
-    imageURI: https://images.samsung.com/is/image/samsung/assets/uk/support/mobile-devices/how-to-remove-ads-from-a-galaxy-smartphone/images/0-how-to-remove-ads-from-a-galaxy-smartphone.png?$ORIGIN_PNG$
-    priceValue: 30
+    imageURI: https://drive.google.com/file/d/1PqOdIw9qPSOfab4xCwVkR7--mXznZt4w/view?usp=sharing
+    priceValue: 5
     consumed: 1
   metricaEnable: 0
   metricaCounterID: 0
