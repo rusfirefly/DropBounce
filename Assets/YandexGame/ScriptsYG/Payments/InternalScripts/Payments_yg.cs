@@ -108,12 +108,12 @@ namespace YG
         public void _BuyPayments(string id) => BuyPayments(id);
 
 
-
         // Receiving Data
 
         public void PaymentsEntries(string data)
         {
 #if !UNITY_EDITOR
+            Message($"json data {data}");
             if (data == "none")
                 return;
 
@@ -127,7 +127,10 @@ namespace YG
                 purchases[i].title = paymentsData.title[i];
                 purchases[i].description = paymentsData.description[i];
                 purchases[i].imageURI = paymentsData.imageURI[i];
+                purchases[i].price = paymentsData.price[i];
                 purchases[i].priceValue = paymentsData.priceValue[i];
+                purchases[i].currencyCode = paymentsData.currencyCode[i];
+                purchases[i].currencyImage = paymentsData.currencyImage[i];
                 purchases[i].consumed = paymentsData.consumed[i];
             }
             langPayments = paymentsData.language;

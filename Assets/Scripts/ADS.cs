@@ -1,3 +1,5 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using YG;
 using YG.Utils.Pay;
@@ -20,28 +22,6 @@ public class ADS : MonoBehaviour
         
     }
 
-    private void OnEnable()
-    {
-        YandexGame.GetPaymentsEvent += OnPaymentsEvent;
-    }
-
-    private void OnDisable()
-    {
-        YandexGame.GetPaymentsEvent -= OnPaymentsEvent;
-    }
-
-    private void OnPaymentsEvent()
-    {
-        _hudHandler.LoadInfoPrice("update");
-        Purchase[] purchases = YandexGame.purchases;
-        foreach (Purchase purchase in purchases)
-        {
-            _loadingImage.LoadImage(purchase.imageURI);
-            _hudHandler.LoadInfoPrice($"{purchase.priceValue}");
-        }
-        
-    }
-
     private void SetVibleADS(bool visible)
     {
         YandexGame.StickyAdActivity(visible);
@@ -57,13 +37,26 @@ public class ADS : MonoBehaviour
 
     public void LoadInfo()
     {
-        
-       /* Purchase[] purchases = YandexGame.purchases;
-        foreach (Purchase purchase in purchases)
+        if (YandexGame.savesData.IsADS)
         {
-            _loadingImage.LoadImage(purchase.imageURI);
-            _hudHandler.LoadInfoPrice($"{purchase.priceValue}");
-        }*/
+            _hudHandler.ShowWindowPayments();
+            LoadPurchases();
+        }
+        else
+        {
+            _hudHandler.ShowSoldWindow();
+        }
     }
 
+    private void LoadPurchases()
+    {
+        YandexGame.GetPayments();
+
+        Purchase[] purchases = YandexGame.purchases;
+        foreach (Purchase purchase in purchases)
+        {
+            _loadingImage.LoadImage(purchase.currencyImage);
+            _hudHandler.LoadInfoPrice($"{purchase.price}");
+        }
+    }
 }

@@ -35,7 +35,8 @@ public class Bootstrap : MonoBehaviour
 
         if(_saveHandler.IsADS == false)
         {
-            _hudHandler.SetSoldButton();
+            //_hudHandler.SetSoldButton();
+            
         }
 
         _tutorial.Initialized(_saveHandler);
@@ -59,7 +60,7 @@ public class Bootstrap : MonoBehaviour
         {
             case "777":
                 _hudHandler.ShowSoldWindow();
-                _hudHandler.SetSoldButton();
+                //_hudHandler.SetSoldButton();
                 _ads.RemoveADS();
             break;
         }

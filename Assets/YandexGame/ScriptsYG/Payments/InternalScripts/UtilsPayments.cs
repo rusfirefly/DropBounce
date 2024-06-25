@@ -10,6 +10,9 @@ namespace YG.Utils.Pay
         public string description;
         public string imageURI;
         public string priceValue;
+        public string price;
+        public string currencyCode;
+        public string currencyImage;
         public bool consumed;
     }
 
@@ -20,6 +23,9 @@ namespace YG.Utils.Pay
         public string[] description;
         public string[] imageURI;
         public string[] priceValue;
+        public string[] price;
+        public string[] currencyCode;
+        public string[] currencyImage;
         public bool[] consumed;
         public string language;
     }

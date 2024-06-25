@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Tutorial : MonoBehaviour
@@ -6,7 +7,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private RectTransform[] _tutorials;
     [SerializeField] private GameObject _closeButton;
     [SerializeField] private GameObject _eggFatigue;
-
+    [SerializeField] private TMP_Text _caption;
 
     private SaveHandler _saveHandler;
     private int _numbreTutorial;
@@ -52,6 +53,7 @@ public class Tutorial : MonoBehaviour
     {
         Player.CollectedCoin += OnCollectedCoin;
     }
+
     private void OnCollectedCoin(int coin)
     {
         if (_numbreTutorial != 2) return;
@@ -68,18 +70,21 @@ public class Tutorial : MonoBehaviour
     public void Initialized(SaveHandler saveHandler)
     {
         _saveHandler = saveHandler;
+
         SetHideTutorial(saveHandler.IsTutorial);
 
         if (saveHandler.IsTutorial)
         {
             _numbreTutorial = 0;
+            _caption.gameObject.SetActive(true);
             _tutorials[_numbreTutorial].gameObject.SetActive(true);
         }
        
     }
 
     private void HideTutorial()
-    {   
+    {
+        _caption.gameObject.SetActive(false);
         _saveHandler.SetHideTutorial();
         _tutorial.gameObject.SetActive(false);
     }

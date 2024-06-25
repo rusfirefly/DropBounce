@@ -75,6 +75,11 @@ public class HudHandler : MonoBehaviour
         _payments.transform.DOScale(scale, duration);
     }
 
+    public void ShowWindowPayments()
+    {
+        _payments.gameObject.SetActive(true);
+    }
+
     public void ShowSoldWindow() => _sold.gameObject.SetActive(true);
 
     public void SetSoldButton()

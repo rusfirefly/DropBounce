@@ -20,6 +20,9 @@ function GetPayments(sendback) {
                         let imageURI = [];
                         let priceValue = [];
                         let consumed = [];
+                        let price = [];//цена
+                        let currencyCode = [];//код
+                        let currencyImage =[];//иконка
 
                         payments.getPurchases().then(purchases => {
                             for (let i = 0; i < products.length; i++) {
@@ -28,6 +31,10 @@ function GetPayments(sendback) {
                                 description[i] = products[i].description;
                                 imageURI[i] = products[i].imageURI;
                                 priceValue[i] = products[i].priceValue;
+
+                                price[i] = products[i].price;
+                                currencyCode[i] = products[i].priceCurrencyCode;    
+                                currencyImage[i] = products[i].getPriceCurrencyImage();
 
                                 consumed[i] = true;
                                 for (i2 = 0; i2 < purchases.length; i2++) {
@@ -43,10 +50,14 @@ function GetPayments(sendback) {
                                 "title": title,
                                 "description": description,
                                 "imageURI": imageURI,
+                                "price":price,
                                 "priceValue": priceValue,
+                                "currencyCode": currencyCode,
+                                "currencyImage": currencyImage,
                                 "consumed": consumed,
                                 "language": ysdk.environment.i18n.lang
                             };
+
 
                             if (sendback)
                                 myGameInstance.SendMessage('YandexGame', 'PaymentsEntries', JSON.stringify(jsonPayments));
