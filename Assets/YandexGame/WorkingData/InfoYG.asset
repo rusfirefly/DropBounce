@@ -22,8 +22,8 @@ MonoBehaviour:
     name: Firefly
     uniqueID: 000
     photo: https://avatars.mds.yandex.net/get-yapic/50595/45JHCJsHaGwXmnOdXSWQ2KvGas-1/islands-200
-  AdWhenLoadingScene: 1
-  showFirstAd: 1
+  AdWhenLoadingScene: 0
+  showFirstAd: 0
   rewardedAfterClosing: 0
   adDisplayCalls: 0
   fullscreenAdInterval: 15
@@ -41,7 +41,7 @@ MonoBehaviour:
   leaderboardEnable: 1
   saveScoreAnonymousPlayers: 1
   leaderboardSimulation:
-  - technoName: advanced
+  - technoName: 1111fg
     entries: 'Test LeaderBoard
 
       Name: advanced
@@ -90,7 +90,7 @@ MonoBehaviour:
     thisPlayer:
       rank: 2
       score: 10
-  - technoName: simple
+  - technoName: LeaderBoard
     entries: "Test LeaderBoard\nName: simple\n1. \u0441\u043A\u0440\u044B\u0442:
       10\n2. Max: 15\n3. Maria: 23"
     isDefault: 0
@@ -380,6 +380,9 @@ MonoBehaviour:
     description: Disables Advertising
     imageURI: https://drive.google.com/file/d/1PqOdIw9qPSOfab4xCwVkR7--mXznZt4w/view?usp=sharing
     priceValue: 5
+    price: 
+    currencyCode: 
+    currencyImage: 
     consumed: 1
   metricaEnable: 0
   metricaCounterID: 0

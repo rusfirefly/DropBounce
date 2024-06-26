@@ -20676,7 +20676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 834991595997691942, guid: 69f631e4a49a85340b209b63845c3553, type: 3}
       propertyPath: quantityAround
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 834991595997691942, guid: 69f631e4a49a85340b209b63845c3553, type: 3}
       propertyPath: updateLBMethod
@@ -20688,7 +20688,7 @@ PrefabInstance:
       objectReference: {fileID: 3513154496409631555, guid: 0159bd3e51987d4439316b909c7953ec, type: 3}
     - target: {fileID: 834991595997691942, guid: 69f631e4a49a85340b209b63845c3553, type: 3}
       propertyPath: maxQuantityPlayers
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1047399698725826055, guid: 69f631e4a49a85340b209b63845c3553, type: 3}
       propertyPath: m_Enabled

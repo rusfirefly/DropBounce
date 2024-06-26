@@ -104,11 +104,13 @@ public class HudHandler : MonoBehaviour
             auth = true;
         }
 
+        _authOk.gameObject.SetActive(auth);
+        _authNo.gameObject.SetActive(noAuth);
+
         _playerName.text = $"{YandexGame.playerName}\n";
         _playerScore.text = $"{YandexGame.savesData.Score}";
 
-        _authOk.gameObject.SetActive(auth);
-        _authNo.gameObject.SetActive(noAuth);
+
         _authButton.interactable = noAuth;
 
         if(auth)
