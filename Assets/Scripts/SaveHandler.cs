@@ -17,7 +17,8 @@ public class SaveHandler : MonoBehaviour
 
     public void Initialize()
     {
-        YandexGame.LoadProgress();        
+        YandexGame.LoadProgress();
+        //YandexGame.LoadCloud();
     }
 
     public void ResetSave()

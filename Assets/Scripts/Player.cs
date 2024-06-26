@@ -127,11 +127,12 @@ public class Player : MonoBehaviour
     private void OnDie()
     {
         YandexGame.LoadProgress();
+        //YandexGame.LoadCloud();
         int bestScore = YandexGame.savesData.Score;
 
         if (_score > bestScore)
         {
-            YandexGame.NewLeaderboardScores("LeaderBoard", _score);
+            YandexGame.NewLeaderboardScores("Score", _score);
             _saveHandler.SaveScore(_score);
         }
 

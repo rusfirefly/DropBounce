@@ -17,11 +17,11 @@ public class Bootstrap : MonoBehaviour
     private void Awake()
     {
         YandexGame.InitializationGame();
-        _saveHandler.Initialize();
     }
 
     private void Start()
     {
+        _saveHandler.Initialize();
         _enemyPool.Initialize();
         _coinPool.Initialize();
         _spawn.Initialize();

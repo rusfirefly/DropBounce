@@ -22,8 +22,8 @@ MonoBehaviour:
     name: Firefly
     uniqueID: 000
     photo: https://avatars.mds.yandex.net/get-yapic/50595/45JHCJsHaGwXmnOdXSWQ2KvGas-1/islands-200
-  AdWhenLoadingScene: 0
-  showFirstAd: 0
+  AdWhenLoadingScene: 1
+  showFirstAd: 1
   rewardedAfterClosing: 0
   adDisplayCalls: 0
   fullscreenAdInterval: 15
@@ -33,8 +33,8 @@ MonoBehaviour:
   saveCloud: 1
   flush: 1
   localSaveSync: 1
-  saveCloudInterval: 2
-  saveOnQuitGame: 0
+  saveCloudInterval: 1
+  saveOnQuitGame: 1
   quitGameParameters:
     objectName: YandexGame
     methodName: _SaveProgress

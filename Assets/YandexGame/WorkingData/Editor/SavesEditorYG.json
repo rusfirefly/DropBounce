@@ -1,10 +1,10 @@
 {
-  "idSave": 62,
+  "idSave": 3,
   "isFirstSession": false,
-  "language": "en",
+  "language": "ru",
   "promptDone": false,
-  "Score": 1,
+  "Score": 2,
   "IsSound": true,
-  "IsADS": false,
+  "IsADS": true,
   "IsTutorial": false
 }
