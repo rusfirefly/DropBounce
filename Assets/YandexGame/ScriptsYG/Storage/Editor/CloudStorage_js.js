@@ -31,7 +31,9 @@ function LoadCloud(sendback) {
                             if (sendback)
                                 myGameInstance.SendMessage('YandexGame', 'SetLoadSaves', JSON.stringify(data.saves));
                             resolve(JSON.stringify(data.saves));
-                            console.log("load data: ",data.saves);
+
+                            console.log("load data: ",JSON.stringify(data.saves));
+                            
                         } else {
                             if (sendback)
                                 myGameInstance.SendMessage('YandexGame', 'SetLoadSaves', 'noData');

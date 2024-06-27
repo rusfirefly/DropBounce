@@ -30,7 +30,7 @@ public class Languge : MonoBehaviour
                 break;
         }
 
-        YandexGame.SaveProgress();
+        //YandexGame.SaveProgress();
     }
 
     private void SelectLanguage(int id)
@@ -50,4 +50,6 @@ public class Languge : MonoBehaviour
             _languageSelected[i].gameObject.SetActive(visible);
         }
     }
+
+    
 }

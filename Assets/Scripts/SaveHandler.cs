@@ -18,7 +18,11 @@ public class SaveHandler : MonoBehaviour
     public void Initialize()
     {
         YandexGame.LoadProgress();
-        //YandexGame.LoadCloud();
+        if(YandexGame.savesData.isFirstSession)
+        {
+            YandexGame.savesData = new SavesYG();
+            Save();
+        }
     }
 
     public void ResetSave()
@@ -52,7 +56,7 @@ public class SaveHandler : MonoBehaviour
         Save();
     }
 
-    private void Save() => YandexGame.SaveProgress();
+    public void Save() => YandexGame.SaveProgress();
     
     
 
